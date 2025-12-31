@@ -48,14 +48,14 @@ export function HomePage() {
       <section className="relative bg-gray-900 text-white overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
-          <img 
+          <img
             src="https://images.unsplash.com/photo-1703797967065-539818bc9770?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXN0YXVyYW50JTIwZm9vZCUyMHRhYmxlJTIwZWxlZ2FudHxlbnwxfHx8fDE3NjcxNjg5MDh8MA&ixlib=rb-4.1.0&q=80&w=1080"
             alt="Restaurant Hero"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-indigo-900/70 backdrop-blur-[2px]" />
         </div>
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -102,20 +102,20 @@ export function HomePage() {
 
       {/* Offers Section */}
       {activeOffers.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <section className="py-12 sm:py-16 overflow-hidden">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-3xl md:text-4xl font-bold mb-12 text-center text-indigo-600"
+              className="text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center text-indigo-600 px-4"
             >
               <motion.span
-                animate={{ 
+                animate={{
                   backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                 }}
                 transition={{ duration: 5, repeat: Infinity }}
@@ -131,24 +131,26 @@ export function HomePage() {
               </motion.span>
             </motion.h2>
 
-            <div className="relative px-12">
+            <div className="relative">
               {/* Carousel */}
-              <Slider ref={sliderRef} {...sliderSettings} className="offer-carousel mb-8">
-                {activeOffers.map((offer) => (
-                  <div key={offer.id} className="px-3">
-                    <OfferCard offer={offer} onAddToCart={addOfferToCart} />
-                  </div>
-                ))}
-              </Slider>
+              <div className="max-w-[95vw] sm:max-w-7xl mx-auto">
+                <Slider ref={sliderRef} {...sliderSettings} className="offer-carousel mb-8">
+                  {activeOffers.map((offer) => (
+                    <div key={offer.id} className="px-2 sm:px-4 py-4">
+                      <OfferCard offer={offer} onAddToCart={addOfferToCart} />
+                    </div>
+                  ))}
+                </Slider>
+              </div>
 
-              {/* Navigation Buttons Below */}
-              <div className="flex items-center justify-center gap-4">
+              {/* Navigation Buttons */}
+              <div className="flex items-center justify-center gap-4 px-4">
                 <button
-                  className="bg-white shadow-lg rounded-full p-3 hover:bg-indigo-600 hover:text-white transition-all duration-300 border border-gray-200 hover:border-indigo-600"
+                  className="bg-white shadow-lg rounded-full p-3 hover:bg-indigo-600 hover:text-white transition-all duration-300 border border-gray-200 hover:border-indigo-600 active:scale-95"
                   onClick={() => sliderRef.current?.slickPrev()}
                   aria-label="Previous slide"
                 >
-                  <ChevronLeft className="w-6 h-6" />
+                  <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
                 </button>
                 <div className="flex gap-2">
                   {activeOffers.map((_, index) => (
@@ -161,11 +163,11 @@ export function HomePage() {
                   ))}
                 </div>
                 <button
-                  className="bg-white shadow-lg rounded-full p-3 hover:bg-indigo-600 hover:text-white transition-all duration-300 border border-gray-200 hover:border-indigo-600"
+                  className="bg-white shadow-lg rounded-full p-3 hover:bg-indigo-600 hover:text-white transition-all duration-300 border border-gray-200 hover:border-indigo-600 active:scale-95"
                   onClick={() => sliderRef.current?.slickNext()}
                   aria-label="Next slide"
                 >
-                  <ChevronRight className="w-6 h-6" />
+                  <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
                 </button>
               </div>
             </div>

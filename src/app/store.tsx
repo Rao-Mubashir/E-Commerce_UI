@@ -117,15 +117,8 @@ const initialOffers: Offer[] = [
 ];
 
 export function StoreProvider({ children }: { children: ReactNode }) {
-  const [menuItems, setMenuItems] = useState<MenuItem[]>(() => {
-    const stored = localStorage.getItem('menuItems');
-    return stored ? JSON.parse(stored) : initialMenuItems;
-  });
-
-  const [offers, setOffers] = useState<Offer[]>(() => {
-    const stored = localStorage.getItem('offers');
-    return stored ? JSON.parse(stored) : initialOffers;
-  });
+  const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
+  const [offers, setOffers] = useState<Offer[]>([]);
 
   const [cart, setCart] = useState<CartItem[]>(() => {
     const stored = localStorage.getItem('cart');
@@ -139,14 +132,32 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
   const [customerInfo, setCustomerInfo] = useState<CustomerInfo | null>(null);
 
-  // Persist to localStorage
+  // Fetch initial data
   useEffect(() => {
-    localStorage.setItem('menuItems', JSON.stringify(menuItems));
-  }, [menuItems]);
+    const fetchData = async () => {
+      try {
+        const menuRes = await fetch('http://localhost:3000/api/menu-items');
+        const menuData = await menuRes.json();
+        if (menuData.data) setMenuItems(menuData.data);
+
+        const offersRes = await fetch('http://localhost:3000/api/offers');
+        const offersData = await offersRes.json();
+        if (offersData.data) setOffers(offersData.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  // Persist cart and orders to localStorage (keep client-side for now)
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   useEffect(() => {
-    localStorage.setItem('offers', JSON.stringify(offers));
-  }, [offers]);
+    localStorage.setItem('orders', JSON.stringify(orders));
+  }, [orders]);
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -157,29 +168,93 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   }, [orders]);
 
   // Menu Items
-  const addMenuItem = (item: MenuItem) => {
-    setMenuItems(prev => [...prev, item]);
+  // Menu Items
+  const addMenuItem = async (item: MenuItem) => {
+    try {
+      const res = await fetch('http://localhost:3000/api/menu-items', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(item),
+      });
+      if (res.ok) {
+        setMenuItems(prev => [...prev, item]);
+      }
+    } catch (error) {
+      console.error('Error adding menu item:', error);
+    }
   };
 
-  const updateMenuItem = (id: string, item: MenuItem) => {
-    setMenuItems(prev => prev.map(i => i.id === id ? item : i));
+  const updateMenuItem = async (id: string, item: MenuItem) => {
+    try {
+      const res = await fetch(`http://localhost:3000/api/menu-items/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(item),
+      });
+      if (res.ok) {
+        setMenuItems(prev => prev.map(i => i.id === id ? item : i));
+      }
+    } catch (error) {
+      console.error('Error updating menu item:', error);
+    }
   };
 
-  const deleteMenuItem = (id: string) => {
-    setMenuItems(prev => prev.filter(i => i.id !== id));
+  const deleteMenuItem = async (id: string) => {
+    try {
+      const res = await fetch(`http://localhost:3000/api/menu-items/${id}`, {
+        method: 'DELETE',
+      });
+      if (res.ok) {
+        setMenuItems(prev => prev.filter(i => i.id !== id));
+      }
+    } catch (error) {
+      console.error('Error deleting menu item:', error);
+    }
   };
 
   // Offers
-  const addOffer = (offer: Offer) => {
-    setOffers(prev => [...prev, offer]);
+  // Offers
+  const addOffer = async (offer: Offer) => {
+    try {
+      const res = await fetch('http://localhost:3000/api/offers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(offer),
+      });
+      if (res.ok) {
+        setOffers(prev => [...prev, offer]);
+      }
+    } catch (error) {
+      console.error('Error adding offer:', error);
+    }
   };
 
-  const updateOffer = (id: string, offer: Offer) => {
-    setOffers(prev => prev.map(o => o.id === id ? offer : o));
+  const updateOffer = async (id: string, offer: Offer) => {
+    try {
+      const res = await fetch(`http://localhost:3000/api/offers/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(offer),
+      });
+      if (res.ok) {
+        setOffers(prev => prev.map(o => o.id === id ? offer : o));
+      }
+    } catch (error) {
+      console.error('Error updating offer:', error);
+    }
   };
 
-  const deleteOffer = (id: string) => {
-    setOffers(prev => prev.filter(o => o.id !== id));
+  const deleteOffer = async (id: string) => {
+    try {
+      const res = await fetch(`http://localhost:3000/api/offers/${id}`, {
+        method: 'DELETE',
+      });
+      if (res.ok) {
+        setOffers(prev => prev.filter(o => o.id !== id));
+      }
+    } catch (error) {
+      console.error('Error deleting offer:', error);
+    }
   };
 
   // Cart
@@ -212,7 +287,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   };
 
   const removeFromCart = (itemId: string) => {
-    setCart(prev => prev.filter(ci => 
+    setCart(prev => prev.filter(ci =>
       (ci.menuItem?.id !== itemId) && (ci.offer?.id !== itemId)
     ));
   };
@@ -224,8 +299,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     }
     setCart(prev =>
       prev.map(ci =>
-        (ci.menuItem?.id === itemId || ci.offer?.id === itemId) 
-          ? { ...ci, quantity } 
+        (ci.menuItem?.id === itemId || ci.offer?.id === itemId)
+          ? { ...ci, quantity }
           : ci
       )
     );

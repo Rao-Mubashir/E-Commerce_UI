@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Tag, ShoppingCart } from 'lucide-react';
+import { Tag, ShoppingCart, Percent, Timer } from 'lucide-react';
 import { Offer } from '../types';
 
 interface OfferCardProps {
@@ -14,50 +14,65 @@ export function OfferCard({ offer, onAddToCart }: OfferCardProps) {
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="relative rounded-2xl overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-300 bg-gradient-to-br from-indigo-50 to-purple-50 flex flex-col h-full"
+      className="relative rounded-[2rem] overflow-hidden group shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col sm:flex-row bg-white h-full"
     >
-      <div className="relative h-56 overflow-hidden flex-shrink-0">
+      {/* Image Section - Stacked on Mobile, Left Side on Desktop */}
+      <div className="relative w-full sm:w-2/5 h-48 sm:h-auto min-h-[12rem] overflow-hidden flex-shrink-0">
         <img
           src={offer.image}
           alt={offer.title}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-black/60 via-transparent to-transparent opacity-80" />
 
-        {offer.discount > 0 && (
-          <div className="absolute top-4 right-4 bg-indigo-600 text-white px-4 py-2 rounded-full font-bold shadow-lg">
-            {offer.discount}% OFF
-          </div>
-        )}
-      </div>
-
-      <div className="p-5 bg-gradient-to-br from-indigo-50/90 to-purple-50/90 backdrop-blur-sm flex flex-col flex-1">
-        <div className="flex items-start gap-2 flex-1 mb-4">
-          <Tag className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-1" />
-          <div className="flex-1">
-            <h3 className="font-bold text-lg mb-1 text-gray-900">{offer.title}</h3>
-            <p className="text-sm text-gray-700 line-clamp-2">{offer.description}</p>
+        {/* Discount Badge */}
+        <div className="absolute top-4 left-4 sm:top-6 sm:left-6">
+          <div className="bg-white/95 backdrop-blur-md text-indigo-600 px-4 py-2 rounded-full font-bold shadow-lg flex items-center gap-1.5 border border-white/50">
+            <Percent className="w-4 h-4 fill-current" />
+            <span>{offer.discount}% OFF</span>
           </div>
         </div>
+      </div>
 
-        {offer.originalPrice > 0 && (
-          <div className="mb-3">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="text-gray-500 text-sm line-through">${offer.originalPrice.toFixed(2)}</span>
-              <span className="text-indigo-600 font-bold">${discountedPrice.toFixed(2)}</span>
-            </div>
+      {/* Content Section */}
+      <div className="relative w-full sm:w-3/5 p-6 sm:p-8 flex flex-col justify-between bg-gradient-to-br from-white to-gray-50 flex-1">
+        <div>
+          <div className="flex items-center gap-2 text-indigo-600 font-medium text-sm mb-3">
+            <Tag className="w-4 h-4" />
+            <span className="uppercase tracking-wider text-xs font-bold">Limited Offer</span>
           </div>
-        )}
 
-        {onAddToCart && (
-          <button
-            onClick={() => onAddToCart(offer)}
-            className="w-full bg-indigo-600 text-white py-2.5 px-4 rounded-xl hover:bg-indigo-700 transition-colors duration-300 font-semibold shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2"
-          >
-            <ShoppingCart className="w-4 h-4" />
-            Add to Cart
-          </button>
-        )}
+          <h3 className="font-bold text-2xl mb-3 text-gray-900 group-hover:text-indigo-600 transition-colors leading-tight">
+            {offer.title}
+          </h3>
+
+          <p className="text-gray-600 leading-relaxed">
+            {offer.description}
+          </p>
+        </div>
+
+        <div>
+          {offer.originalPrice > 0 && (
+            <div className="flex items-baseline gap-3 mb-6">
+              <span className="text-3xl font-bold text-gray-900">
+                ${discountedPrice.toFixed(2)}
+              </span>
+              <span className="text-lg text-gray-400 line-through decoration-2">
+                ${offer.originalPrice.toFixed(2)}
+              </span>
+            </div>
+          )}
+
+          {onAddToCart && (
+            <button
+              onClick={() => onAddToCart(offer)}
+              className="w-full bg-indigo-600 text-white py-3.5 px-6 rounded-xl hover:bg-indigo-700 active:scale-95 transition-all duration-300 font-bold shadow-lg shadow-indigo-600/25 flex items-center justify-center gap-2.5 group/btn"
+            >
+              <ShoppingCart className="w-5 h-5 group-hover/btn:scale-110 transition-transform" />
+              <span>Add to Cart</span>
+            </button>
+          )}
+        </div>
       </div>
     </motion.div>
   );
