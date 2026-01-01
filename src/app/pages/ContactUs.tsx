@@ -55,16 +55,16 @@ export function ContactUs() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-indigo-600 to-purple-600 text-white py-20">
+      <section className="bg-emerald-600 hover:bg-emerald-700 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-bold mb-6"
           >
             Contact Us
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -86,12 +86,12 @@ export function ContactUs() {
               transition={{ delay: 0.2 + index * 0.1 }}
               className="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-xl transition-shadow duration-300"
             >
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full mb-4">
                 {info.icon}
               </div>
               <h3 className="font-bold text-gray-900 mb-2">{info.title}</h3>
               {info.link ? (
-                <a href={info.link} className="text-gray-600 hover:text-indigo-600 transition-colors">
+                <a href={info.link} className="text-gray-600 hover:text-emerald-600 transition-colors">
                   {info.content}
                 </a>
               ) : (
@@ -109,7 +109,7 @@ export function ContactUs() {
           className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12"
         >
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Send us a Message</h2>
-          
+
           {submitted ? (
             <div className="bg-green-50 border border-green-200 text-green-800 rounded-xl p-6 text-center">
               <p className="text-lg font-semibold">Thank you for contacting us!</p>
@@ -183,7 +183,7 @@ export function ContactUs() {
 
               <button
                 type="submit"
-                className="w-full bg-indigo-600 text-white py-3 px-6 rounded-xl hover:bg-indigo-700 transition-colors duration-300 font-semibold shadow-lg shadow-indigo-600/30"
+                className="w-full bg-emerald-600 text-white py-3 px-6 rounded-xl hover:bg-emerald-700 transition-colors duration-300 font-semibold shadow-lg shadow-indigo-600/30"
               >
                 Send Message
               </button>

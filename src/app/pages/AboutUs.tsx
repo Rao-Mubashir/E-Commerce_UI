@@ -28,16 +28,16 @@ export function AboutUs() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-indigo-600 to-purple-600 text-white py-20">
+      <section className="bg-emerald-600 hover:bg-emerald-700 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-bold mb-6"
           >
             About Us
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -59,17 +59,17 @@ export function AboutUs() {
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
           <div className="prose prose-lg max-w-none text-gray-600 space-y-4">
             <p>
-              Welcome to our restaurant, where passion meets flavor. Our journey began with a simple mission: 
+              Welcome to our restaurant, where passion meets flavor. Our journey began with a simple mission:
               to bring people together through exceptional food and memorable dining experiences.
             </p>
             <p>
-              Every dish we serve is crafted with care, using fresh, locally-sourced ingredients and 
-              time-honored recipes passed down through generations. We believe that great food has the 
+              Every dish we serve is crafted with care, using fresh, locally-sourced ingredients and
+              time-honored recipes passed down through generations. We believe that great food has the
               power to create lasting memories and bring joy to everyday moments.
             </p>
             <p>
-              Our team of dedicated chefs and staff work tirelessly to ensure that every meal exceeds 
-              your expectations. Whether you're dining in or ordering for delivery, we're committed to 
+              Our team of dedicated chefs and staff work tirelessly to ensure that every meal exceeds
+              your expectations. Whether you're dining in or ordering for delivery, we're committed to
               delivering the same high standards of quality and service.
             </p>
           </div>

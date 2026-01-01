@@ -5,7 +5,7 @@ export function TermsOfService() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-indigo-600 to-purple-600 text-white py-20">
+      <section className="bg-emerald-600 hover:bg-emerald-700 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -14,7 +14,7 @@ export function TermsOfService() {
           >
             <FileText className="w-8 h-8" />
           </motion.div>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -22,7 +22,7 @@ export function TermsOfService() {
           >
             Terms of Service
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -44,7 +44,7 @@ export function TermsOfService() {
           <div className="prose prose-lg max-w-none">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Agreement to Terms</h2>
             <p className="text-gray-600 mb-6">
-              By accessing and using our restaurant ordering platform, you agree to be bound by these 
+              By accessing and using our restaurant ordering platform, you agree to be bound by these
               Terms of Service. If you do not agree to these terms, please do not use our services.
             </p>
 
@@ -68,32 +68,32 @@ export function TermsOfService() {
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Delivery</h2>
             <p className="text-gray-600 mb-6">
-              Delivery times are estimates and not guaranteed. We are not responsible for delays caused 
+              Delivery times are estimates and not guaranteed. We are not responsible for delays caused
               by factors beyond our control, such as weather conditions or traffic.
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Account Termination</h2>
             <p className="text-gray-600 mb-6">
-              We reserve the right to terminate or suspend your account and access to our service at our 
-              sole discretion, without notice, for conduct that we believe violates these Terms or is 
+              We reserve the right to terminate or suspend your account and access to our service at our
+              sole discretion, without notice, for conduct that we believe violates these Terms or is
               harmful to other users, us, or third parties.
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Limitation of Liability</h2>
             <p className="text-gray-600 mb-6">
-              To the fullest extent permitted by law, we shall not be liable for any indirect, incidental, 
+              To the fullest extent permitted by law, we shall not be liable for any indirect, incidental,
               special, consequential, or punitive damages arising out of or relating to your use of the service.
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Changes to Terms</h2>
             <p className="text-gray-600 mb-6">
-              We reserve the right to modify these Terms at any time. We will notify you of any changes 
+              We reserve the right to modify these Terms at any time. We will notify you of any changes
               by posting the new Terms on this page and updating the "Last updated" date.
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Contact Us</h2>
             <p className="text-gray-600">
-              If you have any questions about these Terms of Service, please contact us at 
+              If you have any questions about these Terms of Service, please contact us at
               <a href="mailto:legal@restaurant.com" className="text-indigo-600 hover:text-indigo-700 ml-1">
                 legal@restaurant.com
               </a>

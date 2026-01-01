@@ -5,7 +5,7 @@ export function RefundPolicy() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-indigo-600 to-purple-600 text-white py-20">
+      <section className="bg-emerald-600 hover:bg-emerald-700 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -14,7 +14,7 @@ export function RefundPolicy() {
           >
             <DollarSign className="w-8 h-8" />
           </motion.div>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -22,7 +22,7 @@ export function RefundPolicy() {
           >
             Refund Policy
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -44,7 +44,7 @@ export function RefundPolicy() {
           <div className="prose prose-lg max-w-none">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Overview</h2>
             <p className="text-gray-600 mb-6">
-              We want you to be completely satisfied with your order. If you're not happy with your 
+              We want you to be completely satisfied with your order. If you're not happy with your
               purchase, we're here to help with our refund policy.
             </p>
 
@@ -86,14 +86,14 @@ export function RefundPolicy() {
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Partial Refunds</h2>
             <p className="text-gray-600 mb-6">
-              In some cases, we may offer partial refunds for minor issues such as missing condiments 
-              or small portion discrepancies. The refund amount will be determined based on the nature 
+              In some cases, we may offer partial refunds for minor issues such as missing condiments
+              or small portion discrepancies. The refund amount will be determined based on the nature
               of the issue.
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Contact Us</h2>
             <p className="text-gray-600">
-              For refund requests or questions about our policy, please contact us at 
+              For refund requests or questions about our policy, please contact us at
               <a href="mailto:refunds@restaurant.com" className="text-indigo-600 hover:text-indigo-700 ml-1">
                 refunds@restaurant.com
               </a>

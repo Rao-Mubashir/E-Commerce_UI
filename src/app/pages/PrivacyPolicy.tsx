@@ -5,7 +5,7 @@ export function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-indigo-600 to-purple-600 text-white py-20">
+      <section className="bg-emerald-600 hover:bg-emerald-700 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -14,7 +14,7 @@ export function PrivacyPolicy() {
           >
             <Shield className="w-8 h-8" />
           </motion.div>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -22,7 +22,7 @@ export function PrivacyPolicy() {
           >
             Privacy Policy
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -44,7 +44,7 @@ export function PrivacyPolicy() {
           <div className="prose prose-lg max-w-none">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Introduction</h2>
             <p className="text-gray-600 mb-6">
-              This Privacy Policy explains how we collect, use, disclose, and safeguard your information 
+              This Privacy Policy explains how we collect, use, disclose, and safeguard your information
               when you use our restaurant ordering platform. Please read this privacy policy carefully.
             </p>
 
@@ -69,14 +69,14 @@ export function PrivacyPolicy() {
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Information Sharing</h2>
             <p className="text-gray-600 mb-6">
-              We do not sell or rent your personal information to third parties. We may share your 
-              information with service providers who assist us in operating our platform and delivering 
+              We do not sell or rent your personal information to third parties. We may share your
+              information with service providers who assist us in operating our platform and delivering
               your orders, such as payment processors and delivery services.
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Data Security</h2>
             <p className="text-gray-600 mb-6">
-              We implement appropriate technical and organizational measures to protect your personal 
+              We implement appropriate technical and organizational measures to protect your personal
               information against unauthorized access, alteration, disclosure, or destruction.
             </p>
 
@@ -91,7 +91,7 @@ export function PrivacyPolicy() {
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Contact Us</h2>
             <p className="text-gray-600">
-              If you have any questions about this Privacy Policy, please contact us at 
+              If you have any questions about this Privacy Policy, please contact us at
               <a href="mailto:privacy@restaurant.com" className="text-indigo-600 hover:text-indigo-700 ml-1">
                 privacy@restaurant.com
               </a>
