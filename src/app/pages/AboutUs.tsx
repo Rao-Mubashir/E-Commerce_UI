@@ -5,18 +5,18 @@ export function AboutUs() {
   const values = [
     {
       icon: <ChefHat className="w-8 h-8" />,
-      title: 'Quality Food',
-      description: 'We use only the finest ingredients to create delicious meals that satisfy your cravings.'
+      title: 'Medicine',
+      description: 'We meticulously source the most effective compounds to formulate treatments that advance your health and well-being.'
     },
     {
       icon: <Heart className="w-8 h-8" />,
-      title: 'Customer Love',
+      title: 'Customer Experience',
       description: 'Our customers are at the heart of everything we do. Your satisfaction is our priority.'
     },
     {
       icon: <Award className="w-8 h-8" />,
       title: 'Excellence',
-      description: 'We strive for excellence in every dish, ensuring consistent quality and taste.'
+      description: 'We strive for excellence in every delivery, ensuring consistent quality.'
     },
     {
       icon: <Users className="w-8 h-8" />,
@@ -43,7 +43,7 @@ export function AboutUs() {
             transition={{ delay: 0.1 }}
             className="text-lg md:text-xl text-indigo-100"
           >
-            Crafting exceptional dining experiences since day one
+            Crafting exceptional experiences since day one
           </motion.p>
         </div>
       </section>
@@ -59,18 +59,13 @@ export function AboutUs() {
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
           <div className="prose prose-lg max-w-none text-gray-600 space-y-4">
             <p>
-              Welcome to our restaurant, where passion meets flavor. Our journey began with a simple mission:
-              to bring people together through exceptional food and memorable dining experiences.
+              Welcome to our practice, where expertise meets compassion. Our journey began with a simple mission: to enhance the well-being of our community through exceptional healthcare and personalized patient experiences.
             </p>
             <p>
-              Every dish we serve is crafted with care, using fresh, locally-sourced ingredients and
-              time-honored recipes passed down through generations. We believe that great food has the
-              power to create lasting memories and bring joy to everyday moments.
+              Every treatment plan we develop is crafted with care, utilizing evidence-based practices and the latest medical advancements. We believe that quality healthcare has the power to transform lives and bring peace of mind to our patients and their families.
             </p>
             <p>
-              Our team of dedicated chefs and staff work tirelessly to ensure that every meal exceeds
-              your expectations. Whether you're dining in or ordering for delivery, we're committed to
-              delivering the same high standards of quality and service.
+              Our team of dedicated clinicians and support staff work tirelessly to ensure that every visit exceeds your expectations. Whether you are visiting us in person or consulting through our telehealth services, we are committed to delivering the same high standards of safety, integrity, and clinical excellence.
             </p>
           </div>
         </motion.div>
@@ -88,7 +83,7 @@ export function AboutUs() {
               transition={{ delay: 0.3 + index * 0.1 }}
               className="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-xl transition-shadow duration-300"
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full mb-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-emerald-600 text-white rounded-full mb-4">
                 {value.icon}
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">{value.title}</h3>
