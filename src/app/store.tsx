@@ -141,11 +141,11 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const menuRes = await fetch('http://localhost:3000/api/menu-items');
+        const menuRes = await fetch('/api/menu-items');
         const menuData = await menuRes.json();
         if (menuData.data) setMenuItems(menuData.data);
 
-        const offersRes = await fetch('http://localhost:3000/api/offers');
+        const offersRes = await fetch('/api/offers');
         const offersData = await offersRes.json();
         if (offersData.data) setOffers(offersData.data);
       } catch (error) {
@@ -176,7 +176,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   // Menu Items
   const addMenuItem = async (item: MenuItem) => {
     try {
-      const res = await fetch('http://localhost:3000/api/menu-items', {
+      const res = await fetch('/api/menu-items', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(item),
@@ -191,7 +191,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
   const updateMenuItem = async (id: string, item: MenuItem) => {
     try {
-      const res = await fetch(`http://localhost:3000/api/menu-items/${id}`, {
+      const res = await fetch(`/api/menu-items/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(item),
@@ -206,7 +206,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
   const deleteMenuItem = async (id: string) => {
     try {
-      const res = await fetch(`http://localhost:3000/api/menu-items/${id}`, {
+      const res = await fetch(`/api/menu-items/${id}`, {
         method: 'DELETE',
       });
       if (res.ok) {
@@ -221,7 +221,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   // Offers
   const addOffer = async (offer: Offer) => {
     try {
-      const res = await fetch('http://localhost:3000/api/offers', {
+      const res = await fetch('/api/offers', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(offer),
@@ -236,7 +236,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
   const updateOffer = async (id: string, offer: Offer) => {
     try {
-      const res = await fetch(`http://localhost:3000/api/offers/${id}`, {
+      const res = await fetch(`/api/offers/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(offer),
@@ -251,7 +251,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
   const deleteOffer = async (id: string) => {
     try {
-      const res = await fetch(`http://localhost:3000/api/offers/${id}`, {
+      const res = await fetch(`/api/offers/${id}`, {
         method: 'DELETE',
       });
       if (res.ok) {

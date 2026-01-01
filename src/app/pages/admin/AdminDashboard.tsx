@@ -95,7 +95,7 @@ export function AdminDashboard({ onNavigate }: AdminDashboardProps) {
     }
 
     try {
-      const res = await fetch('http://localhost:3000/api/admin/update-password', {
+      const res = await fetch('/api/admin/update-password', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: 'admin', newPassword }),

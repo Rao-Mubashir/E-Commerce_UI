@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 const db = require('./db');
 const stripe = process.env.STRIPE_SECRET_KEY ? require('stripe')(process.env.STRIPE_SECRET_KEY) : null;
 if (!process.env.STRIPE_SECRET_KEY) {
@@ -9,10 +10,12 @@ if (!process.env.STRIPE_SECRET_KEY) {
 }
 
 const app = express();
-const PORT = 3000;
-
+const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
+
+// Serve static files from the Vite build directory
+app.use(express.static(path.join(__dirname, '../dist')));
 
 // --- Menu Items Routes ---
 
@@ -193,6 +196,12 @@ app.post('/api/create-payment-intent', async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
+});
+
+// --- SPA Routing Support ---
+// This handles client-side routing by returning index.html for any unknown routes
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
 app.listen(PORT, () => {

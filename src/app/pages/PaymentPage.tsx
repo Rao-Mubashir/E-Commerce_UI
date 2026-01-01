@@ -34,7 +34,7 @@ function CheckoutForm({ onNavigate, total }: CheckoutFormProps) {
     try {
       // 1. Create PaymentIntent on the backend
       // Using /api prefix as we assume proxy or direct URL will be handled
-      const res = await fetch('http://localhost:3000/api/create-payment-intent', {
+      const res = await fetch('/api/create-payment-intent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount: total }),
