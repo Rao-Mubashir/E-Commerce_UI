@@ -6,12 +6,14 @@ import { useState } from 'react';
 interface ProductCardProps {
   item: MenuItem;
   onAddToCart: (item: MenuItem) => void;
+  onClick?: () => void;
 }
 
-export function ProductCard({ item, onAddToCart }: ProductCardProps) {
+export function ProductCard({ item, onAddToCart, onClick }: ProductCardProps) {
   const [added, setAdded] = useState(false);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent triggering card click
     onAddToCart(item);
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
@@ -21,7 +23,8 @@ export function ProductCard({ item, onAddToCart }: ProductCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full"
+      onClick={onClick}
+      className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full cursor-pointer"
     >
       <div className="relative overflow-hidden aspect-[4/3]">
         <img
@@ -49,11 +52,10 @@ export function ProductCard({ item, onAddToCart }: ProductCardProps) {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleAddToCart}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all ${
-              added
-                ? 'bg-green-500 text-white'
-                : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg shadow-indigo-600/30'
-            }`}
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all ${added
+              ? 'bg-green-500 text-white'
+              : 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-600/30'
+              }`}
           >
             {added ? (
               <>

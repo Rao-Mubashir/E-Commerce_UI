@@ -30,6 +30,11 @@ interface StoreContextType {
   // Customer Info
   customerInfo: CustomerInfo | null;
   setCustomerInfo: (info: CustomerInfo) => void;
+
+  // Admin Auth
+  isAdmin: boolean;
+  adminLogin: (username: string) => void;
+  adminLogout: () => void;
 }
 
 const StoreContext = createContext<StoreContextType | undefined>(undefined);
@@ -344,6 +349,21 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     return order;
   };
 
+  // Admin Auth
+  const [isAdmin, setIsAdmin] = useState<boolean>(() => {
+    return localStorage.getItem('isAdmin') === 'true';
+  });
+
+  const adminLogin = (username: string) => {
+    setIsAdmin(true);
+    localStorage.setItem('isAdmin', 'true');
+  };
+
+  const adminLogout = () => {
+    setIsAdmin(false);
+    localStorage.removeItem('isAdmin');
+  };
+
   return (
     <StoreContext.Provider
       value={{
@@ -365,7 +385,10 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         orders,
         createOrder,
         customerInfo,
-        setCustomerInfo
+        setCustomerInfo,
+        isAdmin,
+        adminLogin,
+        adminLogout
       }}
     >
       {children}

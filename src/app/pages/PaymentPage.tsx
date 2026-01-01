@@ -92,7 +92,7 @@ function CheckoutForm({ onNavigate, total }: CheckoutFormProps) {
               type="text"
               value={cardholderName}
               onChange={(e) => setCardholderName(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
               placeholder="John Doe"
               required
               disabled={processing}
@@ -103,7 +103,7 @@ function CheckoutForm({ onNavigate, total }: CheckoutFormProps) {
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Card Details
             </label>
-            <div className="px-4 py-3 border border-gray-300 rounded-lg focus-within:ring-2 focus-within:ring-indigo-500 bg-white">
+            <div className="px-4 py-4 border border-gray-300 rounded-lg focus-within:ring-2 focus-within:ring-emerald-500 bg-white">
               <CardElement options={{
                 style: {
                   base: {
@@ -133,7 +133,7 @@ function CheckoutForm({ onNavigate, total }: CheckoutFormProps) {
       <button
         type="submit"
         disabled={!stripe || processing}
-        className="w-full bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white py-4 rounded-xl font-semibold transition-colors flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30"
+        className="w-full bg-emerald-600 hover:bg-emerald-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white py-4 rounded-xl font-semibold transition-colors flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30"
       >
         {processing ? (
           <>
@@ -176,8 +176,8 @@ export function PaymentPage({ onNavigate }: PaymentPageProps) {
           animate={{ opacity: 1, y: 0 }}
         >
           <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <CreditCard className="w-8 h-8 text-indigo-600" />
+            <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <CreditCard className="w-8 h-8 text-emerald-600" />
             </div>
             <h1 className="text-3xl font-bold mb-2">Secure Payment</h1>
             <p className="text-gray-600">Complete your order with card payment</p>

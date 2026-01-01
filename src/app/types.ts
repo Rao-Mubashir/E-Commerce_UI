@@ -2,6 +2,7 @@ export interface MenuItem {
   id: string;
   name: string;
   description: string;
+  detailPageDescription?: string;
   price: number;
   image: string;
   category?: string;
@@ -11,6 +12,7 @@ export interface Offer {
   id: string;
   title: string;
   description: string;
+  detailPageDescription?: string;
   image: string;
   discount: number;
   originalPrice: number;

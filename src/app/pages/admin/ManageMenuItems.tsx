@@ -13,6 +13,7 @@ export function ManageMenuItems() {
     id: '',
     name: '',
     description: '',
+    detailPageDescription: '',
     price: 0,
     image: '',
     category: ''
@@ -23,6 +24,7 @@ export function ManageMenuItems() {
       id: '',
       name: '',
       description: '',
+      detailPageDescription: '',
       price: 0,
       image: '',
       category: ''
@@ -72,7 +74,7 @@ export function ManageMenuItems() {
             </div>
             <button
               onClick={() => setShowForm(true)}
-              className="flex items-center gap-2 px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-xl transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl transition-colors"
             >
               <Plus className="w-5 h-5" />
               <span>Add Item</span>
@@ -117,7 +119,7 @@ export function ManageMenuItems() {
                         type="text"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
                         placeholder="e.g., Margherita Pizza"
                       />
                     </div>
@@ -129,9 +131,22 @@ export function ManageMenuItems() {
                       <textarea
                         value={formData.description}
                         onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
                         rows={3}
                         placeholder="Describe the dish..."
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Detail Page Description (Long Text)
+                      </label>
+                      <textarea
+                        value={formData.detailPageDescription || ''}
+                        onChange={(e) => setFormData({ ...formData, detailPageDescription: e.target.value })}
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                        rows={6}
+                        placeholder="Detailed description for the product page..."
                       />
                     </div>
 
@@ -143,7 +158,7 @@ export function ManageMenuItems() {
                         type="number"
                         value={formData.price || 0}
                         onChange={(e) => setFormData({ ...formData, price: Number(e.target.value) || 0 })}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
                         min="0"
                         step="0.01"
                         placeholder="12.99"
@@ -158,7 +173,7 @@ export function ManageMenuItems() {
                         type="text"
                         value={formData.category || ''}
                         onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
                         placeholder="e.g., Pizza, Pasta, Salad"
                       />
                     </div>
@@ -171,7 +186,7 @@ export function ManageMenuItems() {
                         type="text"
                         value={formData.image}
                         onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
                         placeholder="https://example.com/image.jpg"
                       />
                       {formData.image && (
@@ -190,7 +205,7 @@ export function ManageMenuItems() {
                   <div className="flex gap-3 mt-6">
                     <button
                       onClick={handleSubmit}
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-xl transition-colors"
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl transition-colors"
                     >
                       <Save className="w-5 h-5" />
                       <span>{editingId ? 'Update' : 'Save'} Item</span>
@@ -227,7 +242,7 @@ export function ManageMenuItems() {
                       }}
                     />
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-orange-400 to-pink-500 flex items-center justify-center">
+                    <div className="w-full h-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center">
                       <ChefHat className="w-16 h-16 text-white/50" />
                     </div>
                   )}
@@ -241,7 +256,7 @@ export function ManageMenuItems() {
                 <div className="p-5">
                   <div className="flex items-start justify-between mb-2">
                     <h3 className="font-bold text-lg">{item.name}</h3>
-                    <span className="text-lg font-bold text-orange-600">
+                    <span className="text-lg font-bold text-emerald-600">
                       ${item.price.toFixed(2)}
                     </span>
                   </div>

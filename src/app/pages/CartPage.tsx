@@ -10,7 +10,7 @@ interface CartPageProps {
 
 export function CartPage({ onNavigate }: CartPageProps) {
   const { cart, updateCartQuantity, removeFromCart, cartTotal, setCustomerInfo } = useStore();
-  
+
   const [formData, setFormData] = useState<CustomerInfo>({
     fullName: '',
     email: '',
@@ -75,7 +75,7 @@ export function CartPage({ onNavigate }: CartPageProps) {
           <p className="text-gray-600 mb-6">Add some delicious items to get started!</p>
           <button
             onClick={() => onNavigate('home')}
-            className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition-colors shadow-lg shadow-indigo-600/30"
+            className="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl transition-colors shadow-lg shadow-emerald-600/30"
           >
             Browse Menu
           </button>
@@ -102,11 +102,11 @@ export function CartPage({ onNavigate }: CartPageProps) {
                 const name = isOffer ? item.offer!.title : item.menuItem!.name;
                 const description = isOffer ? item.offer!.description : item.menuItem!.description;
                 const image = isOffer ? item.offer!.image : item.menuItem!.image;
-                
+
                 let itemPrice = 0;
                 let originalPrice = 0;
                 let discountPercent = 0;
-                
+
                 if (isOffer) {
                   originalPrice = item.offer!.originalPrice || 0;
                   discountPercent = item.offer!.discount || 0;
@@ -114,12 +114,12 @@ export function CartPage({ onNavigate }: CartPageProps) {
                 } else {
                   itemPrice = item.menuItem!.price || 0;
                 }
-                
+
                 const lineTotal = itemPrice * item.quantity;
-                
+
                 // Create unique key by combining type and id
                 const uniqueKey = isOffer ? `offer-${id}` : `menu-${id}`;
-                
+
                 return (
                   <motion.div
                     key={uniqueKey}
@@ -141,7 +141,7 @@ export function CartPage({ onNavigate }: CartPageProps) {
                             <div className="flex items-center gap-2">
                               <h3 className="font-semibold">{name}</h3>
                               {isOffer && (
-                                <span className="bg-indigo-100 text-indigo-700 text-xs px-2 py-0.5 rounded-full font-bold">
+                                <span className="bg-emerald-100 text-emerald-700 text-xs px-2 py-0.5 rounded-full font-bold">
                                   {discountPercent}% OFF
                                 </span>
                               )}
@@ -149,7 +149,7 @@ export function CartPage({ onNavigate }: CartPageProps) {
                             <p className="text-sm text-gray-600 line-clamp-1">
                               {description}
                             </p>
-                            
+
                             {/* Show pricing breakdown for offers */}
                             {isOffer && (
                               <div className="mt-2 space-y-1">
@@ -159,7 +159,7 @@ export function CartPage({ onNavigate }: CartPageProps) {
                                 </div>
                                 <div className="flex items-center gap-2 text-sm">
                                   <span className="text-gray-700 font-medium">Discounted:</span>
-                                  <span className="text-indigo-600 font-bold">${itemPrice.toFixed(2)}</span>
+                                  <span className="text-emerald-600 font-bold">${itemPrice.toFixed(2)}</span>
                                   <span className="text-green-600 text-xs">Save ${(originalPrice - itemPrice).toFixed(2)}</span>
                                 </div>
                               </div>
@@ -221,7 +221,7 @@ export function CartPage({ onNavigate }: CartPageProps) {
                 className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
               >
                 <h2 className="text-xl font-bold mb-4">Your Information</h2>
-                
+
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -233,9 +233,8 @@ export function CartPage({ onNavigate }: CartPageProps) {
                       onChange={(e) =>
                         setFormData({ ...formData, fullName: e.target.value })
                       }
-                      className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
-                        errors.fullName ? 'border-red-500' : 'border-gray-300'
-                      }`}
+                      className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 ${errors.fullName ? 'border-red-500' : 'border-gray-300'
+                        }`}
                       placeholder="John Doe"
                     />
                     {errors.fullName && (
@@ -253,9 +252,8 @@ export function CartPage({ onNavigate }: CartPageProps) {
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
                       }
-                      className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
-                        errors.email ? 'border-red-500' : 'border-gray-300'
-                      }`}
+                      className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 ${errors.email ? 'border-red-500' : 'border-gray-300'
+                        }`}
                       placeholder="john@example.com"
                     />
                     {errors.email && (
@@ -273,9 +271,8 @@ export function CartPage({ onNavigate }: CartPageProps) {
                       onChange={(e) =>
                         setFormData({ ...formData, phone: e.target.value })
                       }
-                      className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
-                        errors.phone ? 'border-red-500' : 'border-gray-300'
-                      }`}
+                      className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 ${errors.phone ? 'border-red-500' : 'border-gray-300'
+                        }`}
                       placeholder="+1 (555) 123-4567"
                     />
                     {errors.phone && (
@@ -293,9 +290,8 @@ export function CartPage({ onNavigate }: CartPageProps) {
                       onChange={(e) =>
                         setFormData({ ...formData, address: e.target.value })
                       }
-                      className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
-                        errors.address ? 'border-red-500' : 'border-gray-300'
-                      }`}
+                      className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 ${errors.address ? 'border-red-500' : 'border-gray-300'
+                        }`}
                       placeholder="123 Main St, Anytown, USA"
                     />
                     {errors.address && (
@@ -326,7 +322,7 @@ export function CartPage({ onNavigate }: CartPageProps) {
 
                   <button
                     onClick={handleConfirmOrder}
-                    className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-colors flex items-center justify-center gap-2 group shadow-lg shadow-indigo-600/30"
+                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-semibold transition-colors flex items-center justify-center gap-2 group shadow-lg shadow-emerald-600/30"
                   >
                     <span>Confirm Order</span>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
